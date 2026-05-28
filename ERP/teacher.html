@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teacher Portal - ERP System</title>
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- Auth View -->
+    <div id="authView" class="auth-wrapper">
+        <!-- Login Form -->
+        <div id="loginSection" class="glass auth-card animate-fade-in">
+            <div style="text-align: center; margin-bottom: 2rem;">
+                <div class="stat-icon secondary" style="margin: 0 auto 1rem; background: rgba(244, 114, 182, 0.1); color: var(--secondary-color);">
+                    <i class='bx bx-book-reader'></i>
+                </div>
+                <h2>Teacher Login</h2>
+                <p>Welcome back, please login to your account.</p>
+            </div>
+
+            <div id="loginAlert" class="alert"></div>
+
+            <form id="teacherLoginForm">
+                <div class="form-group">
+                    <label class="form-label">Teacher ID</label>
+                    <input type="text" id="loginId" class="form-input" required placeholder="Enter Teacher ID">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Password</label>
+                    <input type="password" id="loginPassword" class="form-input" required placeholder="Enter Password">
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%;">Login</button>
+            </form>
+
+            <div class="auth-toggle">
+                Don't have an account? <a id="showRegister">Register here</a>
+            </div>
+            <div class="auth-toggle" style="margin-top: 0.5rem;">
+                <a href="index.html" style="color: var(--text-secondary);"><i class='bx bx-arrow-back'></i> Back to Home</a>
+            </div>
+        </div>
+
+        <!-- Register Form -->
+        <div id="registerSection" class="glass auth-card animate-fade-in hidden">
+            <div style="text-align: center; margin-bottom: 2rem;">
+                <h2>Teacher Registration</h2>
+                <p>Create your new teacher profile.</p>
+            </div>
+
+            <div id="registerAlert" class="alert"></div>
+
+            <form id="teacherRegisterForm">
+                <div class="form-group">
+                    <label class="form-label">Full Name</label>
+                    <input type="text" id="regName" class="form-input" required placeholder="Full Name">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Teacher ID</label>
+                    <input type="text" id="regId" class="form-input" required placeholder="Choose Teacher ID">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Password</label>
+                    <input type="password" id="regPassword" class="form-input" required placeholder="Create Password">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Confirm Password</label>
+                    <input type="password" id="regConfirmPassword" class="form-input" required placeholder="Confirm Password">
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%;">Register</button>
+            </form>
+
+            <div class="auth-toggle">
+                Already registered? <a id="showLogin">Login here</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Dashboard View -->
+    <div id="dashboardView" class="dashboard-layout hidden">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-logo text-gradient">
+                <h2>Teacher Panel</h2>
+            </div>
+            <ul class="sidebar-nav">
+                <li><a href="#" class="active"><i class='bx bxs-dashboard'></i> Dashboard</a></li>
+                <li><a href="#"><i class='bx bx-book'></i> My Classes</a></li>
+                <li><a href="#"><i class='bx bx-edit'></i> Manage Marks</a></li>
+                <li style="margin-top: auto;"><a href="#" id="logoutBtn" style="color: var(--danger);"><i class='bx bx-log-out'></i> Logout</a></li>
+            </ul>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="dashboard-content">
+            <header style="margin-bottom: 2rem; display: flex; justify-content: space-between; align-items: center;">
+                <div>
+                    <h1 id="welcomeName">Welcome, Teacher</h1>
+                    <p>Have a great day teaching!</p>
+                </div>
+                <div style="display: flex; align-items: center; gap: 1rem;">
+                    <div style="width: 40px; height: 40px; background: rgba(255,255,255,0.05); border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: var(--shadow-sm); border: 1px solid var(--border-color);">
+                        <i class='bx bx-bell' style="font-size: 1.25rem;"></i>
+                    </div>
+                    <div style="width: 40px; height: 40px; background: var(--secondary-color); color: var(--bg-color); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; box-shadow: 0 0 20px rgba(244, 114, 182, 0.2);" id="profileAvatar">
+                        T
+                    </div>
+                </div>
+            </header>
+
+            <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 2rem;">
+                <!-- Left Column -->
+                <div>
+                    <!-- Assigned Subjects -->
+                    <div class="glass" style="padding: 1.5rem; margin-bottom: 2rem;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+                            <h3>Assigned Subjects</h3>
+                            <button class="btn btn-outline" style="padding: 0.25rem 0.75rem; font-size: 0.875rem;">View All</button>
+                        </div>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                            <div style="padding: 1rem; border: 1px solid var(--border-color); background: rgba(255,255,255,0.02); border-radius: var(--radius-md); display: flex; align-items: center;">
+                                <div style="width: 40px; height: 40px; background: rgba(129, 140, 248, 0.1); color: var(--primary-color); border-radius: 8px; display: flex; align-items: center; justify-content: center; margin-right: 1rem; font-size: 1.25rem;">
+                                    <i class='bx bx-code-alt'></i>
+                                </div>
+                                <div>
+                                    <h4 style="margin-bottom: 0.25rem;">Computer Science</h4>
+                                    <p style="font-size: 0.875rem; color: var(--text-secondary);">Class 10A</p>
+                                </div>
+                            </div>
+                            <div style="padding: 1rem; border: 1px solid var(--border-color); background: rgba(255,255,255,0.02); border-radius: var(--radius-md); display: flex; align-items: center;">
+                                <div style="width: 40px; height: 40px; background: rgba(251, 191, 36, 0.1); color: var(--warning); border-radius: 8px; display: flex; align-items: center; justify-content: center; margin-right: 1rem; font-size: 1.25rem;">
+                                    <i class='bx bx-math'></i>
+                                </div>
+                                <div>
+                                    <h4 style="margin-bottom: 0.25rem;">Mathematics</h4>
+                                    <p style="font-size: 0.875rem; color: var(--text-secondary);">Class 9B</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Recent Activity -->
+                    <div class="glass" style="padding: 1.5rem;">
+                        <h3>Recent Activity</h3>
+                        <div style="margin-top: 1rem;">
+                            <div style="display: flex; align-items: flex-start; margin-bottom: 1rem; padding-bottom: 1rem; border-bottom: 1px solid var(--border-color);">
+                                <div style="width: 10px; height: 10px; border-radius: 50%; background: var(--success); margin-top: 6px; margin-right: 1rem;"></div>
+                                <div>
+                                    <p style="font-weight: 500;">Updated marks for Class 10A</p>
+                                    <p style="font-size: 0.875rem; color: var(--text-secondary);">2 hours ago</p>
+                                </div>
+                            </div>
+                            <div style="display: flex; align-items: flex-start;">
+                                <div style="width: 10px; height: 10px; border-radius: 50%; background: var(--primary-color); margin-top: 6px; margin-right: 1rem;"></div>
+                                <div>
+                                    <p style="font-weight: 500;">Uploaded assignment: Arrays in JS</p>
+                                    <p style="font-size: 0.875rem; color: var(--text-secondary);">Yesterday</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column: Profile & Notifications -->
+                <div>
+                    <!-- Profile Summary -->
+                    <div class="glass" style="padding: 1.5rem; margin-bottom: 2rem; text-align: center;">
+                        <div style="width: 80px; height: 80px; background: var(--secondary-color); color: var(--bg-color); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2rem; font-weight: bold; margin: 0 auto 1rem; box-shadow: 0 0 30px rgba(244, 114, 182, 0.2);">
+                            <span id="profileInitial">T</span>
+                        </div>
+                        <h3 id="profileName">Teacher Name</h3>
+                        <p style="color: var(--text-secondary); margin-bottom: 1rem;">Senior Faculty</p>
+                        <div style="display: flex; justify-content: center; gap: 1rem; border-top: 1px solid var(--border-color); padding-top: 1rem;">
+                            <div>
+                                <h4 style="font-size: 1.25rem;">4</h4>
+                                <p style="font-size: 0.75rem; color: var(--text-secondary);">Classes</p>
+                            </div>
+                            <div style="border-left: 1px solid var(--border-color); padding-left: 1rem;">
+                                <h4 style="font-size: 1.25rem;">120</h4>
+                                <p style="font-size: 0.75rem; color: var(--text-secondary);">Students</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Notifications -->
+                    <div class="glass" style="padding: 1.5rem;">
+                        <h3 style="margin-bottom: 1rem;">Notifications</h3>
+                        <div style="background: rgba(129, 140, 248, 0.1); color: var(--primary-color); border: 1px solid rgba(129, 140, 248, 0.2); padding: 1rem; border-radius: var(--radius-md); margin-bottom: 0.5rem; font-size: 0.875rem;">
+                            <strong>Staff Meeting</strong> at 4 PM today.
+                        </div>
+                        <div style="background: rgba(248, 113, 113, 0.1); color: var(--danger); border: 1px solid rgba(248, 113, 113, 0.2); padding: 1rem; border-radius: var(--radius-md); font-size: 0.875rem;">
+                            Submit end-term grades by Friday.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="js/main.js"></script>
+    <script src="js/teacher.js"></script>
+</body>
+</html>

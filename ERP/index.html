@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ERP Portal - Smart Student Management</title>
+
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+
+        /* Background */
+
+        body {
+            background:
+                linear-gradient(rgba(7, 15, 35, 0.92), rgba(7, 15, 35, 0.92)),
+                linear-gradient(90deg, rgba(0,255,170,0.05) 1px, transparent 1px),
+                linear-gradient(rgba(0,255,170,0.05) 1px, transparent 1px);
+
+            background-size: cover, 60px 60px, 60px 60px;
+            color: #ffffff;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Navbar */
+
+        .navbar {
+            background: rgba(8, 15, 35, 0.78);
+            backdrop-filter: blur(14px);
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+
+            /* Increased by 50% */
+            padding: 0.6rem 0;
+
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.9rem;
+            text-decoration: none;
+        }
+
+        .text-gradient {
+            background: linear-gradient(90deg, #00e5a8, #4facfe);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Hero Section */
+
+        .hero {
+            padding: 6rem 1rem 5rem;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 4.5rem;
+            font-weight: 800;
+            line-height: 1.05;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero p {
+            color: rgba(255,255,255,0.72);
+            font-size: 1.1rem;
+            line-height: 1.8;
+            max-width: 700px;
+            margin: auto;
+            margin-bottom: 2.5rem;
+        }
+
+        /* Buttons */
+
+        .hero-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+
+            background: linear-gradient(135deg, #00c896, #00e5a8);
+
+            color: white;
+            text-decoration: none;
+
+            padding: 1rem 2.3rem;
+            border-radius: 16px;
+
+            font-size: 1rem;
+            font-weight: 600;
+
+            transition: all 0.35s ease;
+
+            box-shadow: 0 0 30px rgba(0,229,168,0.15);
+        }
+
+        .hero-btn:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 0 40px rgba(0,229,168,0.35);
+        }
+
+        /* Portal Section */
+
+        .roles-section {
+            padding-bottom: 6rem;
+        }
+
+        .roles-section h2 {
+            font-size: 2.8rem;
+            margin-bottom: 0.8rem;
+            text-align: center;
+        }
+
+        .roles-section p {
+            color: rgba(255,255,255,0.65);
+            text-align: center;
+        }
+
+        .portal-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            margin-top: 3rem;
+        }
+
+        /* Responsive */
+
+        @media (max-width: 768px) {
+
+            .hero h1 {
+                font-size: 3rem;
+            }
+
+            .portal-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .hero-btn {
+                width: 250px;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <!-- Navbar -->
+
+    <nav class="navbar">
+
+        <div class="container nav-content">
+
+            <a href="index.html" class="logo">
+
+                <svg viewBox="0 0 100 100"
+                     width="38"
+                     height="38"
+                     xmlns="http://www.w3.org/2000/svg">
+
+                    <path d="M 10 45 A 40 40 0 0 0 90 45 Z"
+                          fill="#00456B" />
+
+                    <path d="M 14 41 A 38 38 0 0 1 86 41"
+                          stroke="#F28123"
+                          stroke-width="7"
+                          fill="none"
+                          stroke-linecap="round" />
+
+                    <path d="M 28 45 L 28 58 Q 50 78 72 58 L 72 45 Z"
+                          fill="#FFFFFF" />
+
+                    <polygon points="50,26 86,45 50,64 14,45"
+                             fill="#0096D6" />
+
+                    <rect x="75" y="50"
+                          width="2"
+                          height="10"
+                          fill="#00456B" />
+
+                    <path d="M 76 60 Q 81 65 76 72 Q 71 65 76 60 Z"
+                          fill="#00456B" />
+
+                </svg>
+
+                <span class="text-gradient"
+                      style="
+                        font-size: 1.45rem;
+                        font-weight: 800;
+                        letter-spacing: -0.5px;
+                      ">
+
+                    ERP Portal
+
+                </span>
+
+            </a>
+
+        </div>
+
+    </nav>
+
+    <!-- Hero Section -->
+
+    <header class="hero">
+
+        <h1>
+            Smart Student <br>
+            <span class="text-gradient">ERP Management</span>
+        </h1>
+
+        <p>
+            A modern, seamless, and efficient way to manage administrative tasks,
+            teacher schedules, and student records all in one place.
+        </p>
+
+        <a href="#portals" class="hero-btn">
+            Explore Portals
+
+            <i class='bx bx-right-arrow-alt'
+               style="margin-left: 0.5rem; font-size: 1.25rem;"></i>
+        </a>
+
+    </header>
+
+    <!-- Portal Section -->
+
+    <section id="portals" class="roles-section">
+
+        <h2>Select Your Portal</h2>
+
+        <p>
+            Access your personalized, secure dashboard workspace.
+        </p>
+
+        <div class="portal-buttons">
+
+            <a href="admin.html" class="hero-btn">
+                <i class='bx bx-shield-quarter'
+                   style="margin-right:8px;"></i>
+
+                Admin Portal
+            </a>
+
+            <a href="teacher.html" class="hero-btn">
+                <i class='bx bx-book-reader'
+                   style="margin-right:8px;"></i>
+
+                Teacher Portal
+            </a>
+
+            <a href="student.html" class="hero-btn">
+                <i class='bx bx-user-circle'
+                   style="margin-right:8px;"></i>
+
+                Student Portal
+            </a>
+
+        </div>
+
+    </section>
+
+    <script src="js/main.js"></script>
+
+</body>
+</html>

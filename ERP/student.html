@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Portal - ERP System</title>
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- Auth View -->
+    <div id="authView" class="auth-wrapper">
+        <!-- Login Form -->
+        <div id="loginSection" class="glass auth-card animate-fade-in">
+            <div style="text-align: center; margin-bottom: 2rem;">
+                <div class="stat-icon success" style="margin: 0 auto 1rem; background: rgba(52, 211, 153, 0.1); color: var(--success);">
+                    <i class='bx bx-user-circle'></i>
+                </div>
+                <h2>Student Login</h2>
+                <p>Welcome back, please login to your portal.</p>
+            </div>
+
+            <div id="loginAlert" class="alert"></div>
+
+            <form id="studentLoginForm">
+                <div class="form-group">
+                    <label class="form-label">Student ID</label>
+                    <input type="text" id="loginId" class="form-input" required placeholder="Enter Student ID">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Password</label>
+                    <input type="password" id="loginPassword" class="form-input" required placeholder="Enter Password">
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%;">Login</button>
+            </form>
+
+            <div class="auth-toggle">
+                Don't have an account? <a id="showRegister">Register here</a>
+            </div>
+            <div class="auth-toggle" style="margin-top: 0.5rem;">
+                <a href="index.html" style="color: var(--text-secondary);"><i class='bx bx-arrow-back'></i> Back to Home</a>
+            </div>
+        </div>
+
+        <!-- Register Form -->
+        <div id="registerSection" class="glass auth-card animate-fade-in hidden">
+            <div style="text-align: center; margin-bottom: 2rem;">
+                <h2>Student Registration</h2>
+                <p>Create your new student profile.</p>
+            </div>
+
+            <div id="registerAlert" class="alert"></div>
+
+            <form id="studentRegisterForm">
+                <div class="form-group">
+                    <label class="form-label">Full Name</label>
+                    <input type="text" id="regName" class="form-input" required placeholder="Full Name">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Student ID</label>
+                    <input type="text" id="regId" class="form-input" required placeholder="Choose Student ID (e.g. S101)">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Password</label>
+                    <input type="password" id="regPassword" class="form-input" required placeholder="Create Password">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Confirm Password</label>
+                    <input type="password" id="regConfirmPassword" class="form-input" required placeholder="Confirm Password">
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%;">Register</button>
+            </form>
+
+            <div class="auth-toggle">
+                Already registered? <a id="showLogin">Login here</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Dashboard View -->
+    <div id="dashboardView" class="dashboard-layout hidden">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-logo text-gradient">
+                <h2>Student Panel</h2>
+            </div>
+            <ul class="sidebar-nav">
+                <li><a href="#" class="active"><i class='bx bxs-dashboard'></i> Dashboard</a></li>
+                <li><a href="#"><i class='bx bx-calendar-check'></i> Attendance</a></li>
+                <li><a href="#"><i class='bx bx-bar-chart-alt-2'></i> Grades</a></li>
+                <li><a href="#"><i class='bx bx-calendar'></i> Timetable</a></li>
+                <li style="margin-top: auto;"><a href="#" id="logoutBtn" style="color: var(--danger);"><i class='bx bx-log-out'></i> Logout</a></li>
+            </ul>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="dashboard-content">
+            <header style="margin-bottom: 2rem; display: flex; justify-content: space-between; align-items: center;">
+                <div>
+                    <h1 id="welcomeName">Welcome, Student</h1>
+                    <p>Here is your academic overview.</p>
+                </div>
+                <div style="display: flex; align-items: center; gap: 1rem;">
+                    <div style="width: 40px; height: 40px; background: rgba(255,255,255,0.05); border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: var(--shadow-sm); border: 1px solid var(--border-color);">
+                        <i class='bx bx-bell' style="font-size: 1.25rem;"></i>
+                    </div>
+                    <div style="width: 40px; height: 40px; background: var(--success); color: var(--bg-color); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; box-shadow: 0 0 20px rgba(52, 211, 153, 0.2);" id="profileAvatar">
+                        S
+                    </div>
+                </div>
+            </header>
+
+            <!-- Stat Cards -->
+            <div class="stat-cards">
+                <div class="glass stat-card">
+                    <div class="stat-icon primary"><i class='bx bx-bar-chart'></i></div>
+                    <div class="stat-info">
+                        <h3>CGPA</h3>
+                        <p>8.5</p>
+                    </div>
+                </div>
+                <div class="glass stat-card">
+                    <div class="stat-icon success"><i class='bx bx-check-circle'></i></div>
+                    <div class="stat-info">
+                        <h3>Attendance</h3>
+                        <p>92%</p>
+                    </div>
+                </div>
+                <div class="glass stat-card">
+                    <div class="stat-icon secondary"><i class='bx bx-book'></i></div>
+                    <div class="stat-info">
+                        <h3>Assignments Due</h3>
+                        <p>2</p>
+                    </div>
+                </div>
+            </div>
+
+            <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 2rem;">
+                <!-- Left Column -->
+                <div>
+                    <!-- Timetable -->
+                    <div class="glass" style="padding: 1.5rem; margin-bottom: 2rem;">
+                        <h3 style="margin-bottom: 1.5rem;">Today's Timetable</h3>
+                        <div class="table-container">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Time</th>
+                                        <th>Subject</th>
+                                        <th>Teacher</th>
+                                        <th>Room</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>09:00 AM</td>
+                                        <td>Mathematics</td>
+                                        <td>Mr. Sharma</td>
+                                        <td>Room 101</td>
+                                    </tr>
+                                    <tr>
+                                        <td>10:30 AM</td>
+                                        <td>Physics</td>
+                                        <td>Mrs. Gupta</td>
+                                        <td>Lab 2</td>
+                                    </tr>
+                                    <tr>
+                                        <td>12:00 PM</td>
+                                        <td>Computer Sci</td>
+                                        <td>Mr. Verma</td>
+                                        <td>Lab 1</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Recent Marks -->
+                    <div class="glass" style="padding: 1.5rem;">
+                        <h3 style="margin-bottom: 1.5rem;">Recent Grades</h3>
+                        <div style="display: flex; flex-direction: column; gap: 1rem;">
+                            <div style="display: flex; justify-content: space-between; align-items: center; padding-bottom: 1rem; border-bottom: 1px solid var(--border-color);">
+                                <div style="display: flex; align-items: center; gap: 1rem;">
+                                    <div style="width: 40px; height: 40px; background: rgba(129, 140, 248, 0.1); color: var(--primary-color); border-radius: 8px; display: flex; align-items: center; justify-content: center;"><i class='bx bx-math'></i></div>
+                                    <div>
+                                        <h4 style="font-size: 1rem;">Mathematics Mid-Term</h4>
+                                        <p style="font-size: 0.875rem; color: var(--text-secondary);">Score: 85/100</p>
+                                    </div>
+                                </div>
+                                <span style="background: rgba(52, 211, 153, 0.1); color: var(--success); padding: 0.25rem 0.75rem; border-radius: 999px; font-size: 0.75rem; font-weight: 600;">A Grade</span>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; align-items: center;">
+                                <div style="display: flex; align-items: center; gap: 1rem;">
+                                    <div style="width: 40px; height: 40px; background: rgba(248, 113, 113, 0.1); color: var(--danger); border-radius: 8px; display: flex; align-items: center; justify-content: center;"><i class='bx bx-atom'></i></div>
+                                    <div>
+                                        <h4 style="font-size: 1rem;">Physics Practical</h4>
+                                        <p style="font-size: 0.875rem; color: var(--text-secondary);">Score: 78/100</p>
+                                    </div>
+                                </div>
+                                <span style="background: rgba(251, 191, 36, 0.1); color: var(--warning); padding: 0.25rem 0.75rem; border-radius: 999px; font-size: 0.75rem; font-weight: 600;">B+ Grade</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column: Profile -->
+                <div>
+                    <!-- Profile Summary -->
+                    <div class="glass" style="padding: 1.5rem; text-align: center;">
+                        <div style="width: 80px; height: 80px; background: var(--success); color: var(--bg-color); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2rem; font-weight: bold; margin: 0 auto 1rem; box-shadow: 0 0 30px rgba(52, 211, 153, 0.2);">
+                            <span id="profileInitial">S</span>
+                        </div>
+                        <h3 id="profileName">Student Name</h3>
+                        <p style="color: var(--text-secondary); margin-bottom: 0.5rem;" id="profileId">ID: S101</p>
+                        <p style="font-size: 0.875rem; background: rgba(255,255,255,0.05); border: 1px solid var(--border-color); display: inline-block; padding: 0.25rem 0.75rem; border-radius: 999px;">Class 10A</p>
+                        
+                        <div style="margin-top: 2rem; text-align: left;">
+                            <h4 style="font-size: 0.875rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-secondary); margin-bottom: 1rem;">Quick Links</h4>
+                            <ul style="list-style: none; display: flex; flex-direction: column; gap: 0.5rem;">
+                                <li><a href="#" style="color: var(--primary-color); text-decoration: none; font-size: 0.875rem; display: flex; align-items: center;"><i class='bx bx-link-external' style="margin-right: 0.5rem;"></i> Library Portal</a></li>
+                                <li><a href="#" style="color: var(--primary-color); text-decoration: none; font-size: 0.875rem; display: flex; align-items: center;"><i class='bx bx-link-external' style="margin-right: 0.5rem;"></i> Pay Fee Online</a></li>
+                                <li><a href="#" style="color: var(--primary-color); text-decoration: none; font-size: 0.875rem; display: flex; align-items: center;"><i class='bx bx-link-external' style="margin-right: 0.5rem;"></i> Download ID Card</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="js/main.js"></script>
+    <script src="js/student.js"></script>
+</body>
+</html>

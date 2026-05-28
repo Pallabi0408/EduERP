@@ -1,0 +1,1101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>EduERP - Student Management System</title>
+
+    <!-- Google Font -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Boxicons -->
+    <link
+        href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+        rel="stylesheet">
+
+    <style>
+
+        /* =========================
+           RESET
+        ========================= */
+
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+        }
+
+        html{
+            scroll-behavior:smooth;
+        }
+
+        body{
+            font-family:'Inter',sans-serif;
+            background:#f5f7fb;
+            color:#0f172a;
+            overflow-x:hidden;
+        }
+
+        /* =========================
+           COLORS
+        ========================= */
+
+        :root{
+
+    --bg:#e0e0e0;
+    --surface:#adb1b5;
+    --card:#eef2f7;
+
+    --navy:#0f172a;
+    --slate:#334155;
+
+    --text:#1e293b;
+    --muted:#64748b;
+
+    --border:#dbe3ee;
+
+    --primary:#1e293b;
+    --primary-hover:#0f172a;
+}
+
+        /* =========================
+           CONTAINER
+        ========================= */
+
+        .container{
+            width:92%;
+            max-width:1200px;
+            margin:auto;
+        }
+
+        /* =========================
+           NAVBAR
+        ========================= */
+
+        .navbar{
+
+            position:fixed;
+            top:0;
+            width:100%;
+
+            z-index:1000;
+
+            background:rgba(255,255,255,0.72);
+
+            backdrop-filter:blur(16px);
+            -webkit-backdrop-filter:blur(16px);
+
+            border-bottom:1px solid rgba(255,255,255,0.35);
+
+            box-shadow:
+                0 8px 30px rgba(15,23,42,0.04);
+        }
+
+        .nav-wrapper{
+
+            height:78px;
+
+            display:flex;
+            align-items:center;
+            justify-content:space-between;
+        }
+
+        .logo{
+
+            display:flex;
+            align-items:center;
+            gap:12px;
+
+            text-decoration:none;
+        }
+
+        .logo-box{
+
+            width:42px;
+            height:42px;
+
+            border-radius:12px;
+
+            background:#1e293b;
+
+            display:flex;
+            align-items:center;
+            justify-content:center;
+
+            color:white;
+            font-size:1.2rem;
+        }
+
+        .logo span{
+
+            font-size:1.45rem;
+            font-weight:800;
+
+            color:var(--navy);
+        }
+
+        .nav-links{
+
+            display:flex;
+            align-items:center;
+            gap:2.5rem;
+        }
+
+        .nav-links a{
+
+            text-decoration:none;
+
+            color:#475569;
+
+            font-size:0.96rem;
+            font-weight:500;
+
+            transition:0.3s ease;
+        }
+
+        .nav-links a:hover{
+
+            color:#0f172a;
+        }
+
+        /* =========================
+           HERO
+        ========================= */
+
+        .hero{
+
+            padding-top:150px;
+            padding-bottom:90px;
+        }
+
+        .hero-wrapper{
+
+            display:grid;
+            grid-template-columns:1fr 1fr;
+
+            align-items:center;
+            gap:5rem;
+        }
+
+        .hero-content h1{
+
+            font-size:3.5rem;
+            line-height:1.08;
+
+            margin-bottom:1.5rem;
+
+            color:var(--navy);
+
+            letter-spacing:-1.8px;
+
+            font-weight:800;
+        }
+
+        .hero-content p{
+
+            color:var(--muted);
+
+            line-height:1.9;
+
+            font-size:1.04rem;
+
+            max-width:560px;
+
+            margin-bottom:2rem;
+        }
+
+        .hero-btn{
+
+            display:inline-flex;
+            align-items:center;
+            gap:10px;
+
+            text-decoration:none;
+
+            background:#1e293b;
+            color:white;
+
+            padding:14px 24px;
+
+            border-radius:12px;
+
+            font-weight:600;
+
+            transition:0.3s ease;
+        }
+
+        .hero-btn:hover{
+
+            transform:translateY(-3px);
+
+            background:#0f172a;
+        }
+
+        /* =========================
+           DASHBOARD PREVIEW
+        ========================= */
+
+        .preview-card{
+
+            background:rgba(255,255,255,0.78);
+
+            backdrop-filter:blur(16px);
+
+            border:1px solid rgba(255,255,255,0.5);
+
+            border-radius:28px;
+
+            padding:2rem;
+
+            box-shadow:
+                0 12px 40px rgba(15,23,42,0.08);
+        }
+
+        .preview-header{
+
+            display:flex;
+            align-items:center;
+            justify-content:space-between;
+
+            margin-bottom:2rem;
+        }
+
+        .preview-header h3{
+
+            color:var(--navy);
+            font-size:1.2rem;
+        }
+
+        .status{
+
+            background:#eef2ff;
+
+            color:#3730a3;
+
+            padding:8px 14px;
+
+            border-radius:999px;
+
+            font-size:0.82rem;
+            font-weight:600;
+        }
+
+        .preview-grid{
+
+            display:grid;
+            grid-template-columns:1fr 1fr;
+
+            gap:1rem;
+        }
+
+        .preview-box{
+
+            background:#f8fafc;
+
+            border:1px solid #e2e8f0;
+
+            border-radius:18px;
+
+            padding:1.5rem;
+        }
+
+        .preview-box i{
+
+            font-size:1.5rem;
+
+            color:#1e293b;
+
+            margin-bottom:1rem;
+        }
+
+        .preview-box h4{
+
+            font-size:1rem;
+
+            margin-bottom:8px;
+
+            color:var(--navy);
+        }
+
+        .preview-box p{
+
+            color:var(--muted);
+
+            font-size:0.92rem;
+
+            line-height:1.7;
+        }
+
+        /* =========================
+           SECTIONS
+        ========================= */
+
+        .section{
+
+            padding:90px 0;
+        }
+
+        .section-header{
+
+            text-align:center;
+
+            margin-bottom:4rem;
+        }
+
+        .section-header h2{
+
+            font-size:2.2rem;
+
+            margin-bottom:1rem;
+
+            color:var(--navy);
+        }
+
+        .section-header p{
+
+            max-width:700px;
+
+            margin:auto;
+
+            line-height:1.8;
+
+            color:var(--muted);
+        }
+
+        /* =========================
+           FEATURES
+        ========================= */
+
+        .features-grid{
+
+            display:grid;
+
+            grid-template-columns:
+            repeat(auto-fit,minmax(260px,1fr));
+
+            gap:1.5rem;
+        }
+
+        .feature-card{
+
+            background:rgba(255,255,255,0.78);
+
+            backdrop-filter:blur(10px);
+
+            border:1px solid rgba(255,255,255,0.5);
+
+            border-radius:24px;
+
+            padding:2rem;
+
+            transition:0.3s ease;
+        }
+
+        .feature-card:hover{
+
+            transform:translateY(-6px);
+
+            box-shadow:
+                0 10px 30px rgba(15,23,42,0.06);
+        }
+
+        .feature-icon{
+
+            width:60px;
+            height:60px;
+
+            border-radius:16px;
+
+            background:#f1f5f9;
+
+            display:flex;
+            align-items:center;
+            justify-content:center;
+
+            margin-bottom:1.5rem;
+
+            font-size:1.5rem;
+
+            color:#1e293b;
+        }
+
+        .feature-card h3{
+
+            margin-bottom:12px;
+
+            color:var(--navy);
+
+            font-size:1.1rem;
+        }
+
+        .feature-card p{
+
+            color:var(--muted);
+
+            line-height:1.8;
+
+            font-size:0.95rem;
+        }
+
+        /* =========================
+           PORTALS
+        ========================= */
+
+        .portal-grid{
+
+            display:grid;
+
+            grid-template-columns:
+            repeat(auto-fit,minmax(280px,1fr));
+
+            gap:1.5rem;
+        }
+
+        .portal-card{
+
+            background:white;
+
+            border:1px solid var(--border);
+
+            border-radius:24px;
+
+            padding:2rem;
+
+            transition:0.3s ease;
+        }
+
+        .portal-card:hover{
+
+            transform:translateY(-5px);
+
+            box-shadow:
+                0 10px 30px rgba(15,23,42,0.06);
+        }
+
+        .portal-card i{
+
+            font-size:2.3rem;
+
+            color:#1e293b;
+
+            margin-bottom:1rem;
+        }
+
+        .portal-card h3{
+
+            margin-bottom:1rem;
+
+            color:var(--navy);
+        }
+
+        .portal-card p{
+
+            color:var(--muted);
+
+            line-height:1.8;
+
+            margin-bottom:1.5rem;
+        }
+
+        .portal-btn{
+
+            display:inline-flex;
+            align-items:center;
+            gap:8px;
+
+            text-decoration:none;
+
+            background:#1e293b;
+            color:white;
+
+            padding:12px 20px;
+
+            border-radius:10px;
+
+            font-weight:600;
+
+            transition:0.3s ease;
+        }
+
+        .portal-btn:hover{
+
+            background:#0f172a;
+        }
+
+        /* =========================
+           ABOUT SECTION
+        ========================= */
+
+        .about-box{
+
+            background:white;
+
+            border:1px solid var(--border);
+
+            border-radius:28px;
+
+            padding:3rem;
+
+            text-align:center;
+        }
+
+        .about-box p{
+
+            max-width:850px;
+
+            margin:auto;
+
+            color:var(--muted);
+
+            line-height:2;
+        }
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer{
+
+            margin-top:60px;
+
+            background:#e2e8f0;
+
+            padding:70px 0 30px;
+        }
+
+        .footer-wrapper{
+
+            display:flex;
+            justify-content:space-between;
+            gap:3rem;
+
+            flex-wrap:wrap;
+
+            margin-bottom:3rem;
+        }
+
+        .footer-column h3{
+
+            margin-bottom:1rem;
+
+            color:var(--navy);
+        }
+
+        .footer-column p,
+        .footer-column a{
+
+            color:#475569;
+
+            text-decoration:none;
+
+            margin-bottom:10px;
+
+            display:block;
+        }
+
+        .footer-bottom{
+
+            border-top:1px solid #cbd5e1;
+
+            padding-top:1.5rem;
+
+            text-align:center;
+
+            color:#64748b;
+        }
+
+        /* =========================
+           RESPONSIVE
+        ========================= */
+
+        @media(max-width:992px){
+
+            .hero-wrapper{
+
+                grid-template-columns:1fr;
+
+                gap:3rem;
+            }
+
+            .hero-content{
+
+                text-align:center;
+            }
+
+            .hero-content p{
+
+                margin-left:auto;
+                margin-right:auto;
+            }
+        }
+
+        @media(max-width:768px){
+
+            .hero{
+
+                padding-top:120px;
+                padding-bottom:70px;
+            }
+
+            .hero-content h1{
+
+                font-size:2.4rem;
+                line-height:1.2;
+            }
+
+            .hero-content p{
+
+                font-size:0.97rem;
+            }
+
+            .preview-grid{
+
+                grid-template-columns:1fr;
+            }
+
+            .section{
+
+                padding:70px 0;
+            }
+
+            .section-header h2{
+
+                font-size:1.8rem;
+            }
+
+            .nav-links{
+
+                gap:1.2rem;
+            }
+
+            .nav-links a{
+
+                font-size:0.85rem;
+            }
+        }
+
+        @media(max-width:520px){
+
+            .nav-links{
+                display:none;
+            }
+
+            .hero-content h1{
+
+                font-size:2rem;
+            }
+
+            .hero-btn{
+
+                width:100%;
+                justify-content:center;
+            }
+
+            .preview-card{
+
+                padding:1.5rem;
+            }
+
+            .feature-card,
+            .portal-card{
+
+                padding:1.5rem;
+            }
+
+            .about-box{
+
+                padding:2rem 1.5rem;
+            }
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+
+    <nav class="navbar">
+
+        <div class="container nav-wrapper">
+
+            <a href="#" class="logo">
+
+                <div class="logo-box">
+                    <i class='bx bxs-graduation'></i>
+                </div>
+
+                <span>EduERP</span>
+
+            </a>
+
+            <div class="nav-links">
+
+                <a href="#features">Features</a>
+                <a href="#portals">Portals</a>
+                <a href="#about">About</a>
+                <a href="#contact">Contact</a>
+
+            </div>
+
+        </div>
+
+    </nav>
+
+    <!-- HERO -->
+
+    <section class="hero">
+
+        <div class="container hero-wrapper">
+
+            <div class="hero-content">
+
+                <h1>
+                    Modern ERP Platform for Educational Institutions
+                </h1>
+
+                <p>
+                    Streamline academic administration, attendance tracking,
+                    examination management, fee monitoring, and institutional
+                    operations through a centralized ERP system designed for
+                    schools, colleges, and universities.
+                </p>
+
+                <a href="#portals" class="hero-btn">
+
+                    Explore Portals
+
+                    <i class='bx bx-right-arrow-alt'></i>
+
+                </a>
+
+            </div>
+
+            <div class="preview-card">
+
+                <div class="preview-header">
+
+                    <h3>Dashboard Modules</h3>
+
+                    <div class="status">
+                        Secure Access
+                    </div>
+
+                </div>
+
+                <div class="preview-grid">
+
+                    <div class="preview-box">
+
+                        <i class='bx bx-calendar-check'></i>
+
+                        <h4>Attendance</h4>
+
+                        <p>
+                            Manage daily attendance records and classroom activities.
+                        </p>
+
+                    </div>
+
+                    <div class="preview-box">
+
+                        <i class='bx bx-book-content'></i>
+
+                        <h4>Examinations</h4>
+
+                        <p>
+                            Organize assessments, grading systems, and result publishing.
+                        </p>
+
+                    </div>
+
+                    <div class="preview-box">
+
+                        <i class='bx bx-credit-card'></i>
+
+                        <h4>Fee Monitoring</h4>
+
+                        <p>
+                            Centralized fee records, payment tracking, and dues management.
+                        </p>
+
+                    </div>
+
+                    <div class="preview-box">
+
+                        <i class='bx bx-line-chart'></i>
+
+                        <h4>Analytics</h4>
+
+                        <p>
+                            Institutional insights and operational reporting dashboards.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- FEATURES -->
+
+    <section class="section" id="features">
+
+        <div class="container">
+
+            <div class="section-header">
+
+                <h2>Core ERP Modules</h2>
+
+                <p>
+                    Comprehensive tools built to simplify academic management
+                    and administrative workflows.
+                </p>
+
+            </div>
+
+            <div class="features-grid">
+
+                <div class="feature-card">
+
+                    <div class="feature-icon">
+                        <i class='bx bx-calendar-check'></i>
+                    </div>
+
+                    <h3>Attendance Management</h3>
+
+                    <p>
+                        Track student attendance records efficiently across classes and departments.
+                    </p>
+
+                </div>
+
+                <div class="feature-card">
+
+                    <div class="feature-icon">
+                        <i class='bx bx-book-reader'></i>
+                    </div>
+
+                    <h3>Academic Management</h3>
+
+                    <p>
+                        Manage classroom schedules, academic records, and course activities.
+                    </p>
+
+                </div>
+
+                <div class="feature-card">
+
+                    <div class="feature-icon">
+                        <i class='bx bx-credit-card'></i>
+                    </div>
+
+                    <h3>Fee Management</h3>
+
+                    <p>
+                        Monitor payments, pending dues, and student financial records.
+                    </p>
+
+                </div>
+
+                <div class="feature-card">
+
+                    <div class="feature-icon">
+                        <i class='bx bx-bar-chart-alt-2'></i>
+                    </div>
+
+                    <h3>Institution Analytics</h3>
+
+                    <p>
+                        Gain operational insights through centralized reporting dashboards.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- PORTALS -->
+
+    <section class="section" id="portals">
+
+        <div class="container">
+
+            <div class="section-header">
+
+                <h2>Role-Based Portals</h2>
+
+                <p>
+                    Dedicated dashboards tailored for administrators,
+                    faculty members, and students.
+                </p>
+
+            </div>
+
+            <div class="portal-grid">
+
+                <div class="portal-card">
+
+                    <i class='bx bx-shield-quarter'></i>
+
+                    <h3>Admin Portal</h3>
+
+                    <p>
+                        Manage departments, students, reports,
+                        and institutional operations centrally.
+                    </p>
+
+                    <a href="admin.html" class="portal-btn">
+
+                        Open Portal
+
+                        <i class='bx bx-right-arrow-alt'></i>
+
+                    </a>
+
+                </div>
+
+                <div class="portal-card">
+
+                    <i class='bx bx-book-reader'></i>
+
+                    <h3>Teacher Portal</h3>
+
+                    <p>
+                        Upload attendance, manage marks,
+                        and monitor classroom performance.
+                    </p>
+
+                    <a href="teacher.html" class="portal-btn">
+
+                        Open Portal
+
+                        <i class='bx bx-right-arrow-alt'></i>
+
+                    </a>
+
+                </div>
+
+                <div class="portal-card">
+
+                    <i class='bx bx-user-circle'></i>
+
+                    <h3>Student Portal</h3>
+
+                    <p>
+                        Access attendance records, schedules,
+                        examination reports, and fee details.
+                    </p>
+
+                    <a href="student.html" class="portal-btn">
+
+                        Open Portal
+
+                        <i class='bx bx-right-arrow-alt'></i>
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- ABOUT -->
+
+    <section class="section" id="about">
+
+        <div class="container">
+
+            <div class="about-box">
+
+                <div class="section-header">
+
+                    <h2>About EduERP</h2>
+
+                </div>
+
+                <p>
+                    EduERP is a centralized student management platform designed
+                    to simplify institutional workflows through secure and modern
+                    digital infrastructure. The system provides role-based access
+                    for administrators, faculty members, and students while ensuring
+                    efficient academic management, operational transparency,
+                    and streamlined communication.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- FOOTER -->
+
+    <footer id="contact">
+
+        <div class="container">
+
+            <div class="footer-wrapper">
+
+                <div class="footer-column">
+
+                    <h3>EduERP</h3>
+
+                    <p>
+                        ERP platform for educational institutions.
+                    </p>
+
+                </div>
+
+                <div class="footer-column">
+
+                    <h3>Quick Links</h3>
+
+                    <a href="#">Home</a>
+                    <a href="#features">Features</a>
+                    <a href="#portals">Portals</a>
+                    <a href="#about">About</a>
+
+                </div>
+
+                <div class="footer-column">
+
+                    <h3>Support</h3>
+
+                    <a href="#">Help Center</a>
+                    <a href="#">Documentation</a>
+                    <a href="#">Privacy Policy</a>
+
+                </div>
+
+            </div>
+
+            <div class="footer-bottom">
+
+                © 2026 EduERP. All rights reserved.
+
+            </div>
+
+        </div>
+
+    </footer>
+
+</body>
+
+</html>
